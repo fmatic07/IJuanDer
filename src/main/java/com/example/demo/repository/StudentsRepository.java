@@ -8,4 +8,6 @@ import com.example.demo.entity.Students;
 @Repository
 public interface StudentsRepository extends JpaRepository<Students, Long>{
 
+	Students findByName(String name);
+
 }
