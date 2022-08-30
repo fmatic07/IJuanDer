@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.dto.StudentData;
 import com.example.demo.entity.Students;
 import com.example.demo.exception.StudentException;
+import com.example.demo.exception.response.StudentAlreadyRegistered;
 import com.example.demo.service.StudentService;
 
 @RestController
@@ -28,7 +29,7 @@ public class StudentsController {
 	
 	
 	@PostMapping("/save")
-	public ResponseEntity<String> saveStudent(final @RequestBody Students students) throws StudentException { 
+	public ResponseEntity<StudentAlreadyRegistered> saveStudent(final @RequestBody Students students) throws StudentException { 
 		return studentService.saveStudent(students);
 	}
 

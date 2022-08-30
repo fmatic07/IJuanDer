@@ -1,23 +1,21 @@
 package com.example.demo.exception.response;
 
-import org.springframework.http.HttpStatus;
-
 public class StudentAlreadyRegistered {
-	private HttpStatus httpStatus;
+	private int statusCode;
 	private String message;
 	
-	public StudentAlreadyRegistered(HttpStatus httpStatus, String message) {
+	public StudentAlreadyRegistered(int statusCode, String message) {
 		super();
-		this.httpStatus = httpStatus;
+		this.statusCode = statusCode;
 		this.message = message;
 	}
 
-	public HttpStatus getHttpStatus() {
-		return httpStatus;
+	public int getStatusCode() {
+		return statusCode;
 	}
 
-	public void setHttpStatus(HttpStatus httpStatus) {
-		this.httpStatus = httpStatus;
+	public void setStatusCode(int statusCode) {
+		this.statusCode = statusCode;
 	}
 
 	public String getMessage() {

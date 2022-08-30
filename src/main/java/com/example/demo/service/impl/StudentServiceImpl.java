@@ -8,10 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.HttpStatusCodeException;
 
 import com.example.demo.dto.StudentData;
-import com.example.demo.entity.StudentResponse;
 import com.example.demo.entity.Students;
 import com.example.demo.exception.StudentException;
 import com.example.demo.exception.response.StudentAlreadyRegistered;
@@ -41,23 +39,16 @@ public class StudentServiceImpl implements StudentService {
 		return studentData;
 	}
 
-	@SuppressWarnings("serial")
 	@Override
 	public ResponseEntity<StudentAlreadyRegistered> saveStudent(Students students) throws StudentException {
 		Students existingStudents = studentsRepository.findByName(students.getName());
-		
-		if( existingStudents != null ) {
-
-//			throw new StudentException(new HttpStatusCodeException(HttpStatus.BAD_REQUEST, "Student is registered") {
-//			});
-			
-			return new ResponseEntity<StudentAlreadyRegistered>("Student is already registered", HttpStatus.BAD_REQUEST);
+		if( existingStudents == null ) {
+			return new ResponseEntity<StudentAlreadyRegistered>(
+					new StudentAlreadyRegistered(HttpStatus.BAD_REQUEST.value(), "Student already registered"), HttpStatus.BAD_REQUEST);
 		}
 		
-		
-		
-		
-		return new ResponseEntity<StudentAlreadyRegistered>("Student successfully registered", HttpStatus.OK);
+		return new ResponseEntity<StudentAlreadyRegistered>(
+				new StudentAlreadyRegistered(HttpStatus.OK.value(), "Student successfully registered"), HttpStatus.OK);
 	}
 
 }
