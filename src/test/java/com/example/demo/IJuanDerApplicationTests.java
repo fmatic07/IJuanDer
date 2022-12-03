@@ -4,10 +4,15 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class IJuanDerApplicationTests {
+public class IJuanDerApplicationTests {
 
 	@Test
 	void contextLoads() {
 	}
+
+//	@Test
+//	public void testGetAllStudents() {
+//		fail("Not yet implemented");
+//	}
 
 }

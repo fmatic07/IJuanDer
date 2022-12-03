@@ -17,7 +17,6 @@ import com.example.demo.repository.StudentsRepository;
 import com.example.demo.service.StudentService;
 
 @Service("studentService")
-
 public class StudentServiceImpl implements StudentService {
 	@Autowired
 	private StudentsRepository studentsRepository;
